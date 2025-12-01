@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Campuseats</title>
+</head>
+<body>
+    <h1>Edit Campuseats</h1>
+    <form action="/campuseats/<%=campuseats._id%>?_method=PUT" method="POST">
+        <div>
+            <label for="title">Title</label>
+            <input type="text" id="title" name="campuseats[title]" value="<%=campuseats.title%>">
+        </div>
+        <div>
+            <label for="location">Location</label>
+            <input type="text" id="location" name="campuseats[location]" value="<%=campuseats.location%>">
+        </div>
+        <button>Update Campuseats</button>
+    </form>
+    <a href="/campuseats/<%= campuseats._id%>">Back to Campuseats</a>
+</body>
+</html>

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Campuseats</title>
+</head>
+<body>
+    <h1>ALL campuseats</h1>
+   <div>
+    <a href="/campuseats/new">Add Campuseats</a>
+   </div>
+    <ul>
+        <% for (let campuseat of campuseats) {%>
+          <li><a href="/campuseats/<%= campuseat._id %>"><%= campuseat.title %></a></li>
+          <% } %>
+    </ul>
+</body>
+</html>

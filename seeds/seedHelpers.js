@@ -1,0 +1,36 @@
+module.exports.descriptors =
+[
+    'Tasty',
+    'Authentic',
+    'Fresh',
+    'Spicy',
+    'Homestyle',
+    'Golden',
+    'Famous',
+    'Crispy',
+    'Savory',
+    'Deluxe',
+    'Urban',
+    'Royal',
+    'Street',
+    'Traditional',
+    'Modern'
+]
+module.exports.places = 
+[
+    'Grill',
+    'Kitchen',
+    'House',
+    'Spot',
+    'Corner',
+    'Palace',
+    'Café',
+    'Garden',
+    'Plate',
+    'Deli',
+    'Market',
+    'Express',
+    'Bistro',
+    'Barbecue',
+    'Eatery'
+]
