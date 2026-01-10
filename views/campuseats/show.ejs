@@ -1,17 +1,25 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Show</title>
-</head>
-<body>
-    <h1><%= campuseats.title %></h1>
-    <h2><%= campuseats.location %></h2>
-    <p><a href="/campuseats/<%= campuseats._id%>/edit">Edit</a></p>
-    <footer>
-        
-        <a href="/campuseats">All Campuseats</a>
-    </footer>
-</body>
-</html>
+<% layout('layouts/boilerplate')%>
+<div class="row">
+    <div class="col-6 offset-3">
+        <div class="card mb-3" >
+            <img src="<%= campuseats.image %>" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title"><%= campuseats.title %></h5>
+              <p class="card-text"><%= campuseats.description %></p>
+            </div>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item text-muted"><%= campuseats.location %></li>
+                <li class="list-group-item"><%= campuseats.price%></li>
+              </ul>
+              <div class="card-body">
+                <a class="card-link btn btn-warning" href="/campuseats/<%= campuseats._id%>/edit">Edit</a>
+                <form class="d-inline" action="/campuseats/<%=campuseats._id%>?_method=DELETE" method="POST">
+                    <button class="btn btn-danger">Delete</button>
+                </form> 
+              </div>
+              <div class="card-footer text-body-secondary">
+                2 days ago
+              </div>
+          </div>
+    </div>
+</div>

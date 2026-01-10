@@ -1,22 +1,41 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>New</title>
-</head>
-<body>
-    <form action="/campuseats" method="POST">
-        <div>
-            <label for="title">Title</label>
-            <input type="text" id="title" name="campuseats[title]">
+<% layout('layouts/boilerplate')%>
+<div class="row">
+    <h1 class="text-center">New Campuseats</h1>
+    <div class="col-6 offset-3">
+        <form action="/campuseats" method="POST" novalidate class="validated-form">
+            <div class="mb-3">
+                <label class="form-label" for="title">Title</label>
+                <input class="form-control" type="text" id="title" name="campuseats[title]" required>
+                <div class="valid-feedback">Looks Good!</div>
+            </div>
+            <div class="mb-3">
+                <label class="form-label" for="location">Location</label>
+                <input class="form-control" type="text" id="location" name="campuseats[location]" required>
+                <div class="valid-feedback">Looks Good!</div>
+            </div>
+            <div class="mb-3">
+                <label class="form-label" for="image">Image Url</label>
+                <input class="form-control" type="text" id="image" name="campuseats[image]" required>
+                <div class="valid-feedback">Looks Good!</div>
+            </div>
+            <div class="mb-3">
+                <label class="form-label" for="price">Campuseats Price</label>
+            <div class="input-group">
+                <span class="input-group-text" id="price-label">$</span>
+                <input type="text" class="form-control" id="price"placeholder="0.00" aria-label="Username" aria-describedby="price-label" name="campuseats[price]" required>
+                <div class="valid-feedback">Looks Good!</div>
+              </div>
+            </div>
+            <div class="mb-3">
+                <label class="form-label" for="Description">Description</label>
+                <textarea class="form-control" type="text" id="Description" name="campuseats[Description]" required></textarea>
+                <div class="valid-feedback">Looks Good!</div>
+            </div>
+            <div class="mb-3">
+            <button class="btn-btn-success">Add Campuseats</button>
         </div>
-        <div>
-            <label for="location">Location</label>
-            <input type="text" id="location" name="campuseats[location]">
-        </div>
-        <button>Add Campuseats</button>
-    </form>
-    <a href="/campuseats">All Campuseats</a>
-</body>
-</html>
+        </form>
+        <a href="/campuseats">All Campuseats</a>
+    </div>
+</div>
+
