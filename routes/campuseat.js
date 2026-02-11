@@ -39,10 +39,18 @@ router.get('/new', (req, res) => {
  
 router.get('/:id', async(req, res) => {
     const campuseats = await Campuseats.findById(req.params.id).populate('reviews');
+    if(!campuseat){
+        req.flash('error', 'Cannot find that Spot!');
+        return res.redirect('/campuseats');
+    }
     res.render('campuseats/show', {campuseats});
 })
 router.get('/:id/edit', catchAsync( async(req, res) => {
-    const campuseats = await Campuseats.findById(req.params.id)
+    const campuseats = await Campuseats.findById(req.params.id);
+    if(!campuseat){
+        req.flash('error', 'Cannot find that Spot!');
+        return res.redirect('/campuseats');
+    }
     res.render('campuseats/edit', {campuseats});
 }))
 router.put('/:id', validateCampuseat, catchAsync( async (req, res) => {
@@ -55,6 +63,7 @@ router.put('/:id', validateCampuseat, catchAsync( async (req, res) => {
 router.delete('/:id', catchAsync( async (req, res) =>{
     const {id} = req.params;
     await Campuseats.findByIdAndDelete(id);
+    req.flash('success', ' Succesfully Deleted Spot!')
     res.redirect('/campuseats');
 }));
 
