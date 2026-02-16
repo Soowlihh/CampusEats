@@ -4,13 +4,19 @@ const path = require('path');
 const mongoose = require('mongoose');
 const ejsMate = require('ejs-mate');
 const session = require('express-session');
-const flash = require('connect-flash')
-const {campuseatSchema, reviewSchema} = require('./schema.js');
+const flash = require('connect-flash');
 const expressError = require('./utilities/expressError');
 const methodOverride = require('method-override');
+const passport = require('passport');
+const LocalStrategy = require('passport-local');
+const User = require('./models/user')
 
+const userRoutes = require('./routes/user');
 const campuseat = require('./routes/campuseat');
-const reviews = require('./routes/reviews')
+const reviews = require('./routes/reviews');
+
+
+
 mongoose.connect('mongodb://localhost:27017/campus', {
    // useNewUrlParser: true,
    // useCreateIndex: true,
@@ -52,12 +58,26 @@ const sessionConfig = {
 app.use(session(sessionConfig))
 app.use(flash());
 
+app.use(passport.initialize());
+app.use(passport.session())
+passport.use(new LocalStrategy(User.authenticate()));
+
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
+
 app.use((req, res, next) => {
     res.locals.success = req.flash('success');
     res.locals.error = req.flash('error');
     next();
+});
+
+app.get('/fakeUser', async (req,res) => {
+    const user = new User({email: '', username: ''})
+   const newUser = await User.register(user, '');
+   res.send(newUser);
 })
 
+app.use('/', userRoutes)
 app.use('/campuseats', campuseat)
 app.use('/campuseats/:id/reviews', reviews)
 

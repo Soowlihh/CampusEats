@@ -1,41 +1,44 @@
 <% layout('layouts/boilerplate')%>
-<div class="row">
-    <h1 class="text-center">New Campuseats</h1>
-    <div class="col-6 offset-3">
-        <form action="/campuseats" method="POST" novalidate class="validated-form">
-            <div class="mb-3">
-                <label class="form-label" for="title">Title</label>
-                <input class="form-control" type="text" id="title" name="campuseats[title]" required>
-                <div class="valid-feedback">Looks Good!</div>
-            </div>
-            <div class="mb-3">
-                <label class="form-label" for="location">Location</label>
-                <input class="form-control" type="text" id="location" name="campuseats[location]" required>
-                <div class="valid-feedback">Looks Good!</div>
-            </div>
-            <div class="mb-3">
-                <label class="form-label" for="image">Image Url</label>
-                <input class="form-control" type="text" id="image" name="campuseats[image]" required>
-                <div class="valid-feedback">Looks Good!</div>
-            </div>
-            <div class="mb-3">
-                <label class="form-label" for="price">Campuseats Price</label>
-            <div class="input-group">
-                <span class="input-group-text" id="price-label">$</span>
-                <input type="text" class="form-control" id="price"placeholder="0.00" aria-label="Username" aria-describedby="price-label" name="campuseats[price]" required>
-                <div class="valid-feedback">Looks Good!</div>
-              </div>
-            </div>
-            <div class="mb-3">
-                <label class="form-label" for="Description">Description</label>
-                <textarea class="form-control" type="text" id="Description" name="campuseats[Description]" required></textarea>
-                <div class="valid-feedback">Looks Good!</div>
-            </div>
-            <div class="mb-3">
-            <button class="btn-btn-success">Add Campuseats</button>
-        </div>
-        </form>
-        <a href="/campuseats">All Campuseats</a>
+<form action="/campuseats" method="POST" novalidate class="validated-form">
+    <div class="mb-3">
+      <label class="form-label" for="title">Title</label>
+      <input class="form-control" type="text" id="title" name="campuseats[title]" required>
+      <div class="valid-feedback">Looks Good!</div>
+      <div class="invalid-feedback">Title is required.</div>
     </div>
-</div>
-
+  
+    <div class="mb-3">
+      <label class="form-label" for="location">Location</label>
+      <input class="form-control" type="text" id="location" name="campuseats[location]" required>
+      <div class="valid-feedback">Looks Good!</div>
+      <div class="invalid-feedback">Location is required.</div>
+    </div>
+  
+    <div class="mb-3">
+      <label class="form-label" for="image">Image Url</label>
+      <input class="form-control" type="text" id="image" name="campuseats[image]" required>
+      <div class="valid-feedback">Looks Good!</div>
+      <div class="invalid-feedback">Image URL is required.</div>
+    </div>
+  
+    <div class="mb-3">
+      <label class="form-label" for="price">Campuseats Price</label>
+      <div class="input-group">
+        <span class="input-group-text" id="price-label">$</span>
+        <input type="number" step="0.01" min="0" class="form-control" id="price"
+          placeholder="0.00" aria-label="Price" aria-describedby="price-label"
+          name="campuseats[price]" required>
+        <div class="invalid-feedback">Price is required.</div>
+      </div>
+    </div>
+  
+    <div class="mb-3">
+      <label class="form-label" for="description">Description</label>
+      <textarea class="form-control" id="description" name="campuseats[description]" required></textarea>
+      <div class="valid-feedback">Looks Good!</div>
+      <div class="invalid-feedback">Description is required.</div>
+    </div>
+  
+    <button class="btn btn-success">Add Campuseats</button>
+  </form>
+  

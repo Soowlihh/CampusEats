@@ -2,7 +2,7 @@ const Joi = require('joi');
 
 
 module.exports.campuseatSchema  = Joi.object({
-    campuseats: Joi.object().required({
+    campuseats: Joi.object({
         title: Joi.string().required().messages({"string.base" : "title must not be empty"}),
         price: Joi.number().required().min(0),
         image: Joi.string().required(), 
