@@ -15,6 +15,9 @@ const validateReview = (req, res, next) => {
     } else {
         next();
     }
+    return res.status(400).render('/reviews', {
+        campuseats: req.body.campuseats || {}
+      });
 }
 
 router.post('/', validateReview, catchAsync(async(req, res) => {
