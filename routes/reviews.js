@@ -5,20 +5,7 @@ const Review = require('../models/review');
 const catchAsync = require('../utilities/catchAsync');
 const expressError = require('../utilities/expressError');
 const {reviewSchema} = require('../schema.js');
-
-
-const validateReview = (req, res, next) => {
-    const {error} = reviewSchema.validate(req.body);
-    if(error){
-        const msg = error.details.map(el => el.message).join(',')
-        throw new expressError(msg, 400)
-    } else {
-        next();
-    }
-    return res.status(400).render('/reviews', {
-        campuseats: req.body.campuseats || {}
-      });
-}
+const {validateReview} = require('../middleware')
 
 router.post('/', validateReview, catchAsync(async(req, res) => {
     const campuseat = await Campuseats.findById(req.params.id);

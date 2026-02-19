@@ -23,6 +23,7 @@ const seedDB = async () => {
     const random10 = Math.floor(Math.random() * 10);
     const price = Math.floor(Math.random() * 20) + 10;
     const camp = new Campuseats({
+        owner: '6954c21c63f5e4478c022932',
         location: `${spots[random10].name}, ${spots[random10].address}`,
         title: `${sample(descriptors)} ${sample(places)}`,
         image: `https://picsum.photos/400?random=${Math.random()}`,
